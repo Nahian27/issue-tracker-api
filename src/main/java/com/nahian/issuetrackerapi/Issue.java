@@ -1,6 +1,7 @@
 package com.nahian.issuetrackerapi;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 import java.util.Date;
 import java.util.UUID;
@@ -13,9 +14,11 @@ public class Issue {
     private UUID id;
 
     @Column(nullable = false, columnDefinition = "TEXT", unique = true)
+    @Size(min = 3,message = "Title should be more than 2 characters")
     private String title;
 
     @Column(columnDefinition = "TEXT")
+    @Size(min = 3,message = "Description should be more than 2 characters")
     private String description;
 
     @Column(nullable = false)
